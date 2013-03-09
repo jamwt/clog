@@ -65,7 +65,8 @@ Portability
 -----------
 
 Thus far, `clog` has only been built on Linux.  If you get it built
-somewhere else and have patches, send 'em along.
+somewhere else and have patches, send 'em along.  It's pretty much
+just POSIX, so most things like Unix should work.
 
 Differences from multilog
 -------------------------
