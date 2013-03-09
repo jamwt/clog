@@ -11,7 +11,7 @@ Rotation Scheme
 
 The current log file is always called "current"; previous log
 files are renamed to roughly ISO 8601 format using the system
-time (*hopefully* UTC).  A rotated file might be named:
+time (hopefully UTC).  A rotated file might be named:
 
     a2013-03-09_19:50:33.748839
 
@@ -25,9 +25,10 @@ Deviations from strict ISO 8601 format are:
  * A period, then zero-padded microseconds follows the time.
 
 This format keeps all files sorted in lexicographical order.
-`ls LOG_DIR | tail` will always give you the last 10 files.
-Similarly, `ls | head -n -5 | xargs rm` will make sure only
-the most recent 5 files are in `LOG_DIR`.
+`ls LOG_DIR | tail` will always give you the last 10 files,
+including current.  Similarly, `ls LOG_DIR/a* | head -n -5 | xargs rm`
+will ensure only the most recent 5 archived logs are in `LOG_DIR`,
+which is a safe pruning scheme.
 
 Once an `a*` file is created, is is never renamed or deleted
 unless you do so.  This is a useful property for various
