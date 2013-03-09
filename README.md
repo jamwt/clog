@@ -13,7 +13,7 @@ The current log file is always called "current"; previous log
 files are renamed to roughly ISO 8601 format using the system
 time (hopefully UTC).  A rotated file might be named:
 
-    a2013-03-09_19:50:33.748839
+    a2013-03-09_19:50:33.048839
 
 Deviations from strict ISO 8601 format are:
 
