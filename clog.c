@@ -154,7 +154,6 @@ int main(int argc, char **argv) {
 
             int written = write(fd, buf, end - buf);
             here += written;
-            printf("written is: %d\n", written);
             assert(written == end - buf);
             in_buffer = total - (end - buf);
             if (in_buffer) {
