@@ -24,6 +24,11 @@ a prefix (k|m|g|t), for usage like:
 
     /sbin/my_daemon | clog 100m /var/log/my_daemon
 
+Installing
+----------
+
+    make && sudo make install
+
 Portability
 -----------
 
