@@ -20,9 +20,11 @@ Using `clog` is very simple:
 
 `clog` will make a decent effort to rotate the "current" file
 when it reaches `FILE_SIZE` bytes.  `FILE_SIZE` can also contain
-a prefix (k|m|g|t), for usage like:
+a suffix (K, M, G, or T), for usage like:
 
-    /sbin/my_daemon | clog 100m /var/log/my_daemon
+    /sbin/my_daemon | clog 100M /var/log/my_daemon
+
+This would rotate files at 100 MB.  You get the idea.
 
 Installing
 ----------
