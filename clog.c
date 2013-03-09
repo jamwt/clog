@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/time.h>
+#include <time.h>
 #include <unistd.h>
 
 #define OUTP_LINE_BUF 2000
@@ -55,8 +56,12 @@ void rotate(char *directory, char *current_file) {
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
-    snprintf(buf, buflen, "%s%d.%06d",
-    directory, (int)tv.tv_sec, (int)tv.tv_usec);
+    char tmbuf[500];
+    strftime(tmbuf, 500, "%Y-%m-%d_%H:%M:%S",
+    gmtime(&tv.tv_sec));
+
+    snprintf(buf, buflen, "%sa%s.%06d",
+    directory, tmbuf, (int)tv.tv_usec);
 
     int r = rename(current_file, buf);
 
