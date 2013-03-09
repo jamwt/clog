@@ -44,6 +44,9 @@ clog will append a newline.
 Installing
 ----------
 
+The build process requires `GNU make` and `gcc`. Some `libc`
+is needed, of course, but nothing else.
+
     make && sudo make install
 
 Usage
