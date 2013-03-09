@@ -24,5 +24,15 @@ a prefix (k|m|g|t), for usage like:
 
     /sbin/my_daemon | clog 100m /var/log/my_daemon
 
-Note: unlike multilog, `clog` does not support dump timestamps in
-your files.  `clog` also does not (yet) support removing old files.
+Portability
+-----------
+
+Thus far, clog has only been built on Linux.  If you get it built
+somewhere else and have patches, send 'em along.
+
+Differences from multilog
+-------------------------
+
+ * `clog` does not support dump timestamps in your files.
+ * `clog` also does not (yet) support removing old files.
+ * `clog` has no pattern matching.
