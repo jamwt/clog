@@ -18,7 +18,7 @@ Using `clog` is very simple:
 
     clog FILE_SIZE LOG_DIR
 
-Clog will make a decent effort to rotate the "current" file
+`clog` will make a decent effort to rotate the "current" file
 when it reaches `FILE_SIZE` bytes.  `FILE_SIZE` can also contain
 a prefix (k|m|g|t), for usage like:
 
@@ -32,7 +32,7 @@ Installing
 Portability
 -----------
 
-Thus far, clog has only been built on Linux.  If you get it built
+Thus far, `clog` has only been built on Linux.  If you get it built
 somewhere else and have patches, send 'em along.
 
 Differences from multilog
