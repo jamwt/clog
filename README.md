@@ -15,12 +15,14 @@ time (*hopefully* UTC).  A rotated file might be named:
 
     a2013-03-09_19:50:33.748839
 
-Deviations are:
+Deviations from strict ISO 8601 format are:
 
- * Files start with 'a' for easy glob matching (think: "archive").
- * Underscore is used to separate date from time
+ * Files start with 'a' for easy glob matching (think: "archive")
+   and to place them in earlier lexicographical order than
+   "current"
+ * An underscore is used to separate date from time
    instead of "T" for readability.
- * Zero-padded microseconds is appended after a dot.
+ * A period, then zero-padded microseconds follows the time.
 
 This format keeps all files sorted in lexicographical order.
 `ls LOG_DIR | tail` will always give you the last 10 files.
