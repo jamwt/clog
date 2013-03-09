@@ -6,13 +6,39 @@ clog
 It reads stdin and writes to a rotating series of logs in a
 directory.
 
-The current log file is always called "current"; previous log
-files are renamed "X.Y", where X is the integer seconds since
-the epoch when the file was rotated, and Y is the 0-padded
-representation of the corresponding microseconds elapsed.
+Rotation Scheme
+---------------
 
-`clog` will exit when stdin is closed.  If stdin does not
-end with a newline, clog will append a newline.
+The current log file is always called "current"; previous log
+files are renamed to roughly ISO 8601 format:
+
+    a2013-03-09_19:50:33.748839
+
+Deviations are:
+
+ * Files start with 'a' for easy glob matching (think: "archive").
+ * Underscore is used instead of "T" for readability.
+ * Zero-padded microseconds is appended after a dot.
+
+This format keeps all files sorted in lexicographical order.
+`ls LOG_DIR | tail` will always give you the last 10 files.
+Similarly, `ls | head -n -5 | xargs rm` will make sure only
+the most recent 5 files are in `LOG_DIR`.
+
+Termination
+-----------
+
+`clog` will exit and flush any buffered data into a log file
+when stdin is closed.  If stdin does not end with a newline, 
+clog will append a newline.
+
+Installing
+----------
+
+    make && sudo make install
+
+Usage
+-----
 
 Using `clog` is very simple:
 
@@ -26,11 +52,6 @@ a suffix (K, M, G, or T), for usage like:
 
 This would rotate files at 100 MB.  You get the idea.
 
-Installing
-----------
-
-    make && sudo make install
-
 Portability
 -----------
 
@@ -40,6 +61,6 @@ somewhere else and have patches, send 'em along.
 Differences from multilog
 -------------------------
 
- * `clog` does not support dump timestamps in your files.
- * `clog` also does not (yet) support removing old files.
+ * `clog` does not support dumping timestamps in your files.
+ * `clog` also does not support removing old files.
  * `clog` has no pattern matching.
