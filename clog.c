@@ -83,8 +83,10 @@ int main(int argc, char **argv) {
     if (max_size < 0) {
         fatal("error parsing size specification");
     }
-    if (max_size < 10 * 1024) {
-        fatal("size specification must be at least 10k");
+    if (max_size < INP_BUFSIZ) {
+        char *errmsg = alloca(100);
+        snprintf(errmsg, 100, "size specification must be at least %d bytes", INP_BUFSIZ);
+        fatal(errmsg);
     }
 
     int d_len = strlen(argv[2]);
